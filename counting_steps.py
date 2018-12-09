@@ -5,7 +5,7 @@ def time(n):
     necessary to calculate
     `print countdown(n)`"""
     steps = 0
-    steps = 2 * math.ceil(float(n)/5) + 2
+    steps = 2 * math.ceil(n/5.0) + 2
     return steps
 
 def countdown(x):
