@@ -22,19 +22,27 @@ def getDegrees(graph):
     return degrees
 
 def countOdd(elementDict):
-    return 0
+    values = elementDict.values()
+    numOdd = 0
+    for x in values:
+        if x % 2 == 1:
+            numOdd = numOdd + 1
+    return numOdd
 
 
 def runTests():
     # simple graph (Graph A)
     graphA = [(1, 2), (2, 3), (3, 1)]
-    degrees = getDegrees(graphA)
-    assert len(degrees) == 3
-    assert degrees[1] == 2 and degrees[2] == 2 and degrees[3] == 2
-    assert countOdd(degrees) == 0
+    degreesA = getDegrees(graphA)
+    assert len(degreesA) == 3
+    assert degreesA[1] == 2 and degreesA[2] == 2 and degreesA[3] == 2
+    assert countOdd(degreesA) == 0
 
     # Graph #
     graphB = [(0, 1), (1, 5), (1, 7), (4, 5), (4, 8), (1, 6), (3, 7), (5, 9),
                 (2, 4), (0, 4), (2, 5), (3, 6), (8, 9)]
-
+    degreesB = getDegrees(graphB)
+    assert len(degreesB) == 10
+    assert degreesB[5] == 4
+    assert countOdd(degreesB) == 0
 runTests()
