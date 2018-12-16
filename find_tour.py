@@ -29,6 +29,16 @@ def countOdd(elementDict):
             numOdd = numOdd + 1
     return numOdd
 
+def getFirstNode(graph):
+    degrees = getDegrees(graph)
+    if countOdd(degrees) == 0:
+        return graph[0] # start with any node, it doesn't matter
+    else:
+        # find first odd degree node
+        for key in degrees.keys():
+            if degrees[key] % 2 == 1:
+                return key
+    return None
 
 def runTests():
     # simple graph (Graph A)
@@ -37,6 +47,8 @@ def runTests():
     assert len(degreesA) == 3
     assert degreesA[1] == 2 and degreesA[2] == 2 and degreesA[3] == 2
     assert countOdd(degreesA) == 0
+    firstNode = getFirstNode(graphA)
+    assert firstNode == 1
 
     # Graph #
     graphB = [(0, 1), (1, 5), (1, 7), (4, 5), (4, 8), (1, 6), (3, 7), (5, 9),
@@ -45,4 +57,7 @@ def runTests():
     assert len(degreesB) == 10
     assert degreesB[5] == 4
     assert countOdd(degreesB) == 0
+
+
+# main
 runTests()
